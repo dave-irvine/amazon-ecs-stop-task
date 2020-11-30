@@ -19,6 +19,10 @@ async function run() {
                 reason
             };
 
+            if (reason === "") {
+                delete params.reason;
+            }
+
             await ecs.stopTask(params).promise();
         } catch (error) {
             core.setFailed("Failed to stop task in ECS: " + error.message);
